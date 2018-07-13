@@ -2,12 +2,6 @@
 
 
 [[projects]]
-  name = "github.com/Azure/go-autorest"
-  packages = ["autorest/to"]
-  revision = "1f7cd6cfe0adea687ad44a512dfe76140f804318"
-  version = "v10.12.0"
-
-[[projects]]
   branch = "master"
   name = "github.com/beorn7/perks"
   packages = ["quantile"]
@@ -36,12 +30,6 @@
   name = "github.com/giantswarm/apiextensions"
   packages = ["pkg/apis/provider/v1alpha1"]
   revision = "343bac0517a0df7b1ddf604b3049c6dd589ad235"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/giantswarm/azure-operator"
-  packages = ["service/controller/v3/key"]
-  revision = "1baf6427ba5bac1b6fbdf0be440c130741d5a487"
 
 [[projects]]
   branch = "master"
@@ -466,6 +454,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "464e020beb97623de20965a4942774c302c59bee85fd9fdcc9a6236398fc532c"
+  inputs-digest = "197f011685b33603eeaf5b69ff1a5ba0137f603f695e374b44fa07eb30df293e"
   solver-name = "gps-cdcl"
   solver-version = 1

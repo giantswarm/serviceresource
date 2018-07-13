@@ -1,12 +1,13 @@
 package service
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/giantswarm/microerror"
 	"github.com/giantswarm/micrologger"
 	apiv1 "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes"
-	"reflect"
-	"context"
 )
 
 const (
@@ -52,7 +53,6 @@ func New(config Config) (*Resource, error) {
 	if config.Logger == nil {
 		return nil, microerror.Maskf(invalidConfigError, "config.Logger must not be empty")
 	}
-
 
 	newService := &Resource{
 		desiredServicesFunc: config.DesiredServicesFunc,

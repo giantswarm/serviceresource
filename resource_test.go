@@ -7,8 +7,6 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	apismetav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
-
-	"github.com/giantswarm/kvm-operator/service/controller/v14/key"
 )
 
 func Test_toService(t *testing.T) {
@@ -26,16 +24,10 @@ func Test_toService(t *testing.T) {
 						Name:      "master",
 						Namespace: "xy123",
 						Labels: map[string]string{
-							key.LabelApp:           "master",
-							key.LegacyLabelCluster: "xy123",
-							key.LabelCustomer:      "customer1",
-							key.LabelCluster:       "xy123",
-							key.LabelOrganization:  "org1",
-							key.LabelVersionBundle: "1.2.3",
+							"label": "master",
 						},
 						Annotations: map[string]string{
-							key.AnnotationPrometheusCluster: "xy123",
-							key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+							"annotation": "xy123",
 						},
 					},
 					Spec: corev1.ServiceSpec{
@@ -55,16 +47,10 @@ func Test_toService(t *testing.T) {
 						Name:      "master",
 						Namespace: "xy123",
 						Labels: map[string]string{
-							key.LabelApp:           "master",
-							key.LegacyLabelCluster: "xy123",
-							key.LabelCustomer:      "customer1",
-							key.LabelCluster:       "xy123",
-							key.LabelOrganization:  "org1",
-							key.LabelVersionBundle: "1.2.3",
+							"label": "master",
 						},
 						Annotations: map[string]string{
-							key.AnnotationPrometheusCluster: "xy123",
-							key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+							"annotation": "xy123",
 						},
 					},
 					Spec: corev1.ServiceSpec{
@@ -86,18 +72,6 @@ func Test_toService(t *testing.T) {
 					ObjectMeta: apismetav1.ObjectMeta{
 						Name:      "master",
 						Namespace: "xy123",
-						Labels: map[string]string{
-							key.LabelApp:           "master",
-							key.LegacyLabelCluster: "xy123",
-							key.LabelCustomer:      "customer1",
-							key.LabelCluster:       "xy123",
-							key.LabelOrganization:  "org1",
-							key.LabelVersionBundle: "1.2.3",
-						},
-						Annotations: map[string]string{
-							key.AnnotationPrometheusCluster: "xy123",
-							key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
-						},
 					},
 					Spec: corev1.ServiceSpec{
 						Ports: []corev1.ServicePort{
@@ -147,16 +121,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -174,16 +142,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -205,16 +167,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -232,16 +188,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy456",
-						key.LabelCustomer:      "customer2",
-						key.LabelCluster:       "xy456",
-						key.LabelOrganization:  "org2",
-						key.LabelVersionBundle: "1.2.4",
+						"label": "master2",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -263,16 +213,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -290,16 +234,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy456",
-						key.AnnotationEtcdDomain:        "etcd2.cluster.NOTmydomain:433",
+						"annotation": "xy456",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -321,16 +259,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -348,16 +280,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -384,16 +310,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{
@@ -412,16 +332,10 @@ func Test_isServiceModified(t *testing.T) {
 					Name:      "master",
 					Namespace: "xy123",
 					Labels: map[string]string{
-						key.LabelApp:           "master",
-						key.LegacyLabelCluster: "xy123",
-						key.LabelCustomer:      "customer1",
-						key.LabelCluster:       "xy123",
-						key.LabelOrganization:  "org1",
-						key.LabelVersionBundle: "1.2.3",
+						"label": "master",
 					},
 					Annotations: map[string]string{
-						key.AnnotationPrometheusCluster: "xy123",
-						key.AnnotationEtcdDomain:        "etcd.cluster.mydomain:2379",
+						"annotation": "xy123",
 					},
 				},
 				Spec: corev1.ServiceSpec{

@@ -12,7 +12,7 @@ const (
 
 func clusterID(customObject interface{}) (string, error) {
 	// try aws
-	awsConfig , err := toAWSConfig(customObject)
+	awsConfig, err := toAWSConfig(customObject)
 	if err == nil {
 		return awsConfig.Spec.Cluster.ID, nil
 	} else if !IsWrongTypeError(err) {
@@ -20,7 +20,7 @@ func clusterID(customObject interface{}) (string, error) {
 	}
 
 	// try azure
-	azureConfig , err := toAzureConfig(customObject)
+	azureConfig, err := toAzureConfig(customObject)
 	if err == nil {
 		return azureConfig.Spec.Cluster.ID, nil
 	} else if !IsWrongTypeError(err) {
@@ -28,7 +28,7 @@ func clusterID(customObject interface{}) (string, error) {
 	}
 
 	// try kvm
-	kvmConfig , err := toKVMConfig(customObject)
+	kvmConfig, err := toKVMConfig(customObject)
 	if err == nil {
 		return kvmConfig.Spec.Cluster.ID, nil
 	} else if !IsWrongTypeError(err) {
@@ -38,23 +38,23 @@ func clusterID(customObject interface{}) (string, error) {
 	return "", microerror.Maskf(err, "unknown custom object type")
 }
 
-func clusterNamespace(clusterID string) string{
+func clusterNamespace(clusterID string) string {
 	return clusterID
 }
 
 func isDeleted(customObject v1alpha1.KVMConfig) bool {
 	return customObject.GetDeletionTimestamp() != nil
 }
-func isKVM(customObject interface{}) bool  {
-	_ , err := toKVMConfig(customObject)
+func isKVM(customObject interface{}) bool {
+	_, err := toKVMConfig(customObject)
 	if err == nil {
 		return true
-	} else  {
+	} else {
 		return false
 	}
 }
 
-func toAWSConfig (v interface{}) (v1alpha1.AWSConfig, error) {
+func toAWSConfig(v interface{}) (v1alpha1.AWSConfig, error) {
 	if v == nil {
 		return v1alpha1.AWSConfig{}, microerror.Maskf(wrongTypeError, "expected '%T', got '%T'", &v1alpha1.AWSConfig{}, v)
 	}
@@ -70,7 +70,7 @@ func toAWSConfig (v interface{}) (v1alpha1.AWSConfig, error) {
 	return customObject, nil
 }
 
-func toKVMConfig(v interface{}) (v1alpha1.KVMConfig, error)  {
+func toKVMConfig(v interface{}) (v1alpha1.KVMConfig, error) {
 	if v == nil {
 		return v1alpha1.KVMConfig{}, microerror.Maskf(wrongTypeError, "expected '%T', got '%T'", &v1alpha1.KVMConfig{}, v)
 	}
