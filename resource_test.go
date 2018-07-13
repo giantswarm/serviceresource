@@ -578,7 +578,7 @@ func Test_portsEqual(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := isServiceModified(tc.serviceA, tc.serviceB)
+			result := portsEqual(tc.serviceA, tc.serviceB)
 
 			if result != tc.expectedResult {
 				t.Fatalf("portEqual '%s' failed, got %t, want %t", tc.name, result, tc.expectedResult)
